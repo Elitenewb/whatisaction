@@ -117,9 +117,9 @@ body {
 
 .setup-banner {
   display: block;
-  width: min(100%, 760px);
+  width: min(100%, 380px);
   height: auto;
-  margin: 1rem auto 0;
+  margin: 1.5rem auto 0;
 }
 
 /* — Buttons — */
