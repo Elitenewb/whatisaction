@@ -3,7 +3,17 @@
  * Board path is defined here so teachers can edit questions.json only for cards.
  */
 
+/** Optional sounds — add files under assets/sounds/ (see assets/sounds/README.md). */
+const SOUND_URLS = {
+  dice: 'assets/sounds/dice-roll.mp3',
+  correct: 'assets/sounds/correct.mp3',
+  incorrect: 'assets/sounds/incorrect.mp3',
+  victory: 'assets/sounds/victory.mp3',
+};
+
 const FINISH_INDEX = 27;
+
+let diceRollTimerId = null;
 
 /** @type {{ label: string, special: null | 'rollAgain' | 'forward1' | 'back1' }[]} */
 const BOARD_SPACES = [
@@ -52,6 +62,7 @@ let cardsById = {};
  *   currentCard: Card | null,
  *   lastResult: { correct: boolean, explanation: string, extra?: string } | null,
  *   pendingExtraRoll: boolean,
+ *   diceRolling: boolean,
  * }} */
 let state = createInitialState();
 
@@ -69,7 +80,93 @@ function createInitialState() {
     currentCard: null,
     lastResult: null,
     pendingExtraRoll: false,
+    diceRolling: false,
   };
+}
+
+/**
+ * Play a short sound if the file exists; failures are ignored (missing file, autoplay policy).
+ * @param {'dice' | 'correct' | 'incorrect' | 'victory'} key
+ */
+function playSound(key) {
+  const url = SOUND_URLS[key];
+  if (!url) return;
+  const audio = new Audio(url);
+  audio.volume = 0.85;
+  audio.play().catch(() => {});
+}
+
+function clearDiceRollAnimation() {
+  if (diceRollTimerId != null) {
+    clearTimeout(diceRollTimerId);
+    diceRollTimerId = null;
+  }
+  state.diceRolling = false;
+  if (el.dicePanel) el.dicePanel.classList.remove('is-rolling');
+  if (el.diceValue) el.diceValue.classList.remove('is-ticking', 'dice-settle');
+}
+
+/**
+ * @param {number} finalValue
+ * @param {() => void} onComplete
+ */
+function runDiceRollAnimation(finalValue, onComplete) {
+  clearDiceRollAnimation();
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    state.diceRolling = true;
+    updateControls();
+    playSound('dice');
+    el.diceValue.textContent = String(finalValue);
+    el.diceValue.classList.add('dice-settle');
+    window.setTimeout(() => {
+      el.diceValue.classList.remove('dice-settle');
+      state.diceRolling = false;
+      onComplete();
+    }, 400);
+    return;
+  }
+
+  const TOTAL_MS = 1500;
+  let elapsed = 0;
+
+  state.diceRolling = true;
+  el.dicePanel.classList.add('is-rolling');
+  el.diceValue.classList.add('is-ticking');
+  updateControls();
+  playSound('dice');
+
+  function finish() {
+    diceRollTimerId = null;
+    state.diceRolling = false;
+    el.diceValue.textContent = String(finalValue);
+    el.diceValue.classList.remove('is-ticking');
+    el.dicePanel.classList.remove('is-rolling');
+    el.diceValue.classList.add('dice-settle');
+    window.setTimeout(() => {
+      el.diceValue.classList.remove('dice-settle');
+      onComplete();
+    }, 550);
+  }
+
+  function tick() {
+    if (elapsed >= TOTAL_MS) {
+      finish();
+      return;
+    }
+    const progress = elapsed / TOTAL_MS;
+    const delay = 28 + progress * progress * 260;
+    el.diceValue.textContent = String(1 + Math.floor(Math.random() * 6));
+    elapsed += delay;
+    if (elapsed >= TOTAL_MS) {
+      finish();
+      return;
+    }
+    diceRollTimerId = window.setTimeout(tick, delay);
+  }
+
+  tick();
 }
 
 function shuffle(array) {
@@ -146,9 +243,11 @@ const el = {
   inputP1: document.getElementById('input-p1'),
   inputP2: document.getElementById('input-p2'),
   btnStart: document.getElementById('btn-start'),
-  turnBanner: document.getElementById('turn-banner'),
+  turnStrip: document.getElementById('turn-strip'),
+  turnName: document.getElementById('turn-name'),
   statusBar: document.getElementById('status-bar'),
   boardPath: document.getElementById('board-path'),
+  dicePanel: document.getElementById('dice-panel'),
   diceValue: document.getElementById('dice-value'),
   cardPrompt: document.getElementById('card-prompt'),
   cardOptions: document.getElementById('card-options'),
@@ -225,9 +324,9 @@ function renderStatus() {
     const here = p.position;
     const label =
       here === 0 ? 'Start' : here >= FINISH_INDEX ? 'Finish' : `Space ${here} of ${FINISH_INDEX - 1}`;
-    return `<strong>${escapeHtml(p.name)}</strong>: ${label}`;
+    return `<span class="status-line p${i}"><strong>${escapeHtml(p.name)}</strong>: ${escapeHtml(label)}</span>`;
   });
-  el.statusBar.innerHTML = lines.join('<br />');
+  el.statusBar.innerHTML = lines.join('');
 }
 
 function escapeHtml(s) {
@@ -237,15 +336,30 @@ function escapeHtml(s) {
 }
 
 function renderTurnBanner() {
-  if (state.phase === 'gameOver') {
-    el.turnBanner.textContent = 'Game over';
+  if (!el.turnStrip || !el.turnName) return;
+  const prefixEl = el.turnStrip.querySelector('.turn-prefix');
+  el.turnStrip.classList.remove('turn-p0', 'turn-p1', 'turn-gameover');
+
+  if (state.phase === 'setup') {
+    if (prefixEl) prefixEl.textContent = 'Current turn';
+    el.turnName.textContent = '';
     return;
   }
-  const name = currentPlayer().name;
-  el.turnBanner.textContent = `${name}'s turn`;
+
+  if (state.phase === 'gameOver') {
+    el.turnStrip.classList.add('turn-gameover');
+    if (prefixEl) prefixEl.textContent = '';
+    el.turnName.textContent = 'Game over';
+    return;
+  }
+
+  if (prefixEl) prefixEl.textContent = 'Current turn';
+  el.turnStrip.classList.add(`turn-p${state.currentPlayerIndex}`);
+  el.turnName.textContent = currentPlayer().name;
 }
 
 function renderDice() {
+  if (state.diceRolling) return;
   if (state.pendingRoll == null) {
     el.diceValue.textContent = '—';
   } else {
@@ -301,7 +415,7 @@ function renderFeedback() {
 function updateControls() {
   const ph = state.phase;
   const locked = ph === 'gameOver' || ph === 'setup';
-  el.btnRoll.disabled = locked || ph !== 'rolling';
+  el.btnRoll.disabled = locked || ph !== 'rolling' || state.diceRolling;
   el.btnNext.disabled = locked || ph !== 'awaitNextTurn';
   if (ph === 'awaitAnswer') {
     setOptionButtonsDisabled(false);
@@ -332,6 +446,7 @@ function showSetupScreen() {
 }
 
 function startGame() {
+  clearDiceRollAnimation();
   const n1 = (el.inputP1.value || '').trim() || 'Player 1';
   const n2 = (el.inputP2.value || '').trim() || 'Player 2';
   state = createInitialState();
@@ -345,19 +460,23 @@ function startGame() {
 }
 
 function onRoll() {
-  if (state.phase !== 'rolling') return;
-  state.pendingRoll = rollDie();
-  state.currentCard = drawNextCard();
-  if (!state.currentCard) {
-    el.cardPrompt.textContent = 'No question cards loaded. Add cards to questions.json.';
-    state.phase = 'awaitNextTurn';
+  if (state.phase !== 'rolling' || state.diceRolling) return;
+  const finalValue = rollDie();
+
+  runDiceRollAnimation(finalValue, () => {
+    state.pendingRoll = finalValue;
+    state.currentCard = drawNextCard();
+    if (!state.currentCard) {
+      el.cardPrompt.textContent = 'No question cards loaded. Add cards to questions.json.';
+      state.phase = 'awaitNextTurn';
+      syncUi();
+      return;
+    }
+    state.lastResult = null;
+    el.feedback.classList.add('is-hidden');
+    state.phase = 'awaitAnswer';
     syncUi();
-    return;
-  }
-  state.lastResult = null;
-  el.feedback.classList.add('is-hidden');
-  state.phase = 'awaitAnswer';
-  syncUi();
+  });
 }
 
 function onChooseOption(choice) {
@@ -367,6 +486,7 @@ function onChooseOption(choice) {
   setOptionButtonsDisabled(true);
 
   if (!correct) {
+    playSound('incorrect');
     state.lastResult = {
       correct: false,
       explanation: c.explanation,
@@ -375,6 +495,8 @@ function onChooseOption(choice) {
     syncUi();
     return;
   }
+
+  playSound('correct');
 
   const roll = state.pendingRoll ?? 0;
   const p = currentPlayer();
@@ -411,11 +533,13 @@ function showWinner(explanation, extra) {
   state.phase = 'gameOver';
   el.gameOver.classList.remove('is-hidden');
   el.winnerText.textContent = `${p.name} reached the finish and wins!`;
+  playSound('victory');
   syncUi();
 }
 
 function onNextTurn() {
   if (state.phase !== 'awaitNextTurn') return;
+  clearDiceRollAnimation();
 
   if (state.pendingExtraRoll) {
     state.pendingExtraRoll = false;
@@ -438,6 +562,7 @@ function onNextTurn() {
 }
 
 function onRestart() {
+  clearDiceRollAnimation();
   state = createInitialState();
   state.phase = 'setup';
   el.gameOver.classList.add('is-hidden');

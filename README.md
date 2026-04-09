@@ -60,6 +60,21 @@ The top-level **`labels`** object is for **teacher reference** (short definition
 
 After saving, refresh the browser. If the file has a JSON syntax error, the game may not load questions — use a JSON validator if unsure.
 
+## Optional sounds
+
+The game can play short sound effects. Add **MP3** files under **`assets/sounds/`** using these exact names:
+
+| Filename | When it plays |
+|----------|----------------|
+| `dice-roll.mp3` | When someone clicks **Roll** |
+| `correct.mp3` | After a correct answer |
+| `incorrect.mp3` | After an incorrect answer |
+| `victory.mp3` | When someone wins |
+
+If a file is missing, the game still works. To use **`.ogg`** instead, change the paths in the `SOUND_URLS` object at the top of **`app.js`**.
+
+See [`assets/sounds/README.md`](assets/sounds/README.md) for the same list.
+
 ## Game rules (short)
 
 1. Enter names (or use defaults) and **Start game**.
@@ -77,6 +92,7 @@ After saving, refresh the browser. If the file has a JSON syntax error, the game
 | `style.css` | Layout and colors |
 | `app.js` | Game logic and board layout |
 | `questions.json` | All question cards (edit this to customize content) |
+| `assets/sounds/` | Optional MP3 effects (see table above) |
 | `README.md` | This file |
 
 The **board path** (number of spaces and special tiles) is defined in `app.js` as `BOARD_SPACES` so the JSON file stays focused on questions. To change the board, edit that array in `app.js`.

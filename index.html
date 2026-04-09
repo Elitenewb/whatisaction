@@ -29,7 +29,12 @@
     <section id="screen-game" class="screen is-hidden" aria-live="polite">
       <header class="game-header">
         <h1 class="game-title">Forms of Action</h1>
-        <p id="turn-banner" class="turn-banner"></p>
+        <div id="turn-strip" class="turn-strip" aria-live="polite">
+          <p class="turn-banner">
+            <span class="turn-prefix">Current turn</span>
+            <span id="turn-name" class="turn-name"></span>
+          </p>
+        </div>
       </header>
 
       <div class="game-layout">
@@ -41,7 +46,7 @@
         </div>
 
         <div class="column play-column">
-          <div class="dice-panel">
+          <div id="dice-panel" class="dice-panel">
             <p class="dice-label">Die this turn</p>
             <p id="dice-value" class="dice-value" aria-live="polite">—</p>
           </div>

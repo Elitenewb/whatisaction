@@ -177,14 +177,76 @@ body {
 
 .game-title {
   font-size: clamp(1.35rem, 3vw, 1.75rem);
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.75rem;
   color: var(--accent-dark);
 }
 
+/* Whose turn — large, token-colored name + strip background */
+.turn-strip {
+  margin: 0 auto;
+  max-width: 36rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
 .turn-banner {
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
   margin: 0;
+}
+
+.turn-prefix {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.turn-name {
+  display: block;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.turn-strip.turn-p0 {
+  background: rgba(13, 148, 136, 0.14);
+  border-color: rgba(13, 148, 136, 0.55);
+}
+
+.turn-strip.turn-p0 .turn-name {
+  color: var(--accent-dark);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.turn-strip.turn-p1 {
+  background: rgba(232, 93, 76, 0.14);
+  border-color: rgba(232, 93, 76, 0.5);
+}
+
+.turn-strip.turn-p1 .turn-name {
+  color: #c24133;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.turn-strip.turn-gameover {
+  background: rgba(90, 107, 125, 0.12);
+  border-color: var(--muted);
+}
+
+.turn-strip.turn-gameover .turn-prefix {
+  color: var(--muted);
+}
+
+.turn-strip.turn-gameover .turn-name {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
   color: var(--text);
 }
 
@@ -216,8 +278,24 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.status-bar strong {
+.status-bar .status-line {
+  display: block;
+}
+
+.status-bar .status-line + .status-line {
+  margin-top: 0.35rem;
+}
+
+.status-bar .status-line strong {
+  font-weight: 800;
+}
+
+.status-line.p0 strong {
   color: var(--accent-dark);
+}
+
+.status-line.p1 strong {
+  color: #c24133;
 }
 
 /* — Board — */
@@ -354,6 +432,46 @@ body {
   font-size: 2.25rem;
   font-weight: 700;
   color: var(--accent-dark);
+  display: inline-block;
+  min-width: 2.5rem;
+  transition: color 0.15s ease;
+}
+
+.dice-panel.is-rolling {
+  box-shadow: 0 0 0 3px rgba(246, 200, 76, 0.45);
+}
+
+.dice-value.is-ticking {
+  color: var(--muted);
+}
+
+@keyframes diceSettle {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+    text-shadow: none;
+  }
+  35% {
+    transform: scale(1.35);
+    filter: brightness(1.12);
+    text-shadow: 0 0 12px rgba(13, 148, 136, 0.45);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+    text-shadow: none;
+  }
+}
+
+.dice-value.dice-settle {
+  animation: diceSettle 0.55s ease-out;
+  color: var(--accent-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dice-value.dice-settle {
+    animation: none;
+  }
 }
 
 .card-panel {
