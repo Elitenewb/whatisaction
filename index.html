@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forms of Action — Board Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <section id="screen-setup" class="screen" aria-labelledby="setup-title">
+      <header class="setup-header">
+        <h1 id="setup-title">Forms of Action</h1>
+        <p class="lede">A two-player game for Grade 5 — move along the path by answering questions about the five forms of action.</p>
+      </header>
+      <div class="name-fields">
+        <label class="field">
+          <span>Player 1 name</span>
+          <input type="text" id="input-p1" maxlength="24" value="Player 1" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Player 2 name</span>
+          <input type="text" id="input-p2" maxlength="24" value="Player 2" autocomplete="name" />
+        </label>
+      </div>
+      <button type="button" id="btn-start" class="btn btn-primary">Start game</button>
+    </section>
+
+    <section id="screen-game" class="screen is-hidden" aria-live="polite">
+      <header class="game-header">
+        <h1 class="game-title">Forms of Action</h1>
+        <p id="turn-banner" class="turn-banner"></p>
+      </header>
+
+      <div class="game-layout">
+        <div class="column board-column">
+          <div class="status-bar" id="status-bar"></div>
+          <div class="board-wrap" role="region" aria-label="Game board">
+            <div id="board-path" class="board-path"></div>
+          </div>
+        </div>
+
+        <div class="column play-column">
+          <div class="dice-panel">
+            <p class="dice-label">Die this turn</p>
+            <p id="dice-value" class="dice-value" aria-live="polite">—</p>
+          </div>
+
+          <div class="card-panel" role="region" aria-labelledby="card-heading">
+            <h2 id="card-heading" class="panel-title">Question</h2>
+            <p id="card-prompt" class="card-prompt"></p>
+            <div id="card-options" class="card-options"></div>
+          </div>
+
+          <div id="feedback" class="feedback is-hidden" role="status" aria-live="assertive"></div>
+
+          <div class="controls">
+            <button type="button" id="btn-roll" class="btn btn-primary">Roll</button>
+            <button type="button" id="btn-next" class="btn btn-secondary" disabled>Next turn</button>
+            <button type="button" id="btn-restart" class="btn btn-outline">Restart game</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="game-over" class="modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="winner-text">
+      <div class="modal-box">
+        <p id="winner-text" class="winner-text"></p>
+        <button type="button" id="btn-play-again" class="btn btn-primary">Play again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

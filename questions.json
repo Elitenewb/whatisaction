@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "title": "Forms of Action Game",
+    "version": 1
+  },
+  "labels": {
+    "Lifestyle choices": "Personal daily habits and choices that reflect values (reduce, reuse, everyday decisions).",
+    "Participation": "Joining in community efforts: volunteering, helping run events, contributing time in groups.",
+    "Advocacy": "Speaking up to influence decisions: petitions, letters, presentations to people in power.",
+    "Social entrepreneurship": "Starting or running a project or business that aims to solve a social or environmental problem.",
+    "Social justice": "Working for fairness and rights so all people are treated with dignity and equity."
+  },
+  "cards": [
+    {
+      "id": "c1",
+      "type": "classify",
+      "prompt": "Bring a reusable water bottle to school every day.",
+      "options": [
+        "Lifestyle choices",
+        "Participation",
+        "Advocacy"
+      ],
+      "answer": "Lifestyle choices",
+      "explanation": "This is a personal daily habit change."
+    },
+    {
+      "id": "c2",
+      "type": "classify",
+      "prompt": "Help set up chairs before a school fundraiser.",
+      "options": [
+        "Participation",
+        "Social entrepreneurship",
+        "Social justice"
+      ],
+      "answer": "Participation",
+      "explanation": "Volunteering time for a community event is participation."
+    },
+    {
+      "id": "c3",
+      "type": "classify",
+      "prompt": "Write a letter to the mayor asking for safer crosswalks near your school.",
+      "options": [
+        "Advocacy",
+        "Lifestyle choices",
+        "Participation"
+      ],
+      "answer": "Advocacy",
+      "explanation": "Trying to influence leaders’ decisions is advocacy."
+    },
+    {
+      "id": "c4",
+      "type": "classify",
+      "prompt": "Start a small business selling handmade items and donate part of the money to a food bank.",
+      "options": [
+        "Social entrepreneurship",
+        "Advocacy",
+        "Lifestyle choices"
+      ],
+      "answer": "Social entrepreneurship",
+      "explanation": "Using an enterprise to address a social need fits social entrepreneurship."
+    },
+    {
+      "id": "c5",
+      "type": "classify",
+      "prompt": "Organize a student group to speak up when classmates are treated unfairly because of their background.",
+      "options": [
+        "Social justice",
+        "Participation",
+        "Social entrepreneurship"
+      ],
+      "answer": "Social justice",
+      "explanation": "Standing up for fairness and equal treatment is social justice work."
+    },
+    {
+      "id": "c6",
+      "type": "odd_one_out",
+      "target": "Participation",
+      "prompt": "Which one is NOT mainly an example of Participation?",
+      "options": [
+        "Helping at a community clean-up day",
+        "Joining the student council to plan events",
+        "Writing to a company CEO to change a policy"
+      ],
+      "answer": "Writing to a company CEO to change a policy",
+      "explanation": "The first two are joining in; writing to influence a leader is closer to advocacy."
+    },
+    {
+      "id": "c7",
+      "type": "odd_one_out",
+      "target": "Advocacy",
+      "prompt": "Which one does NOT fit Advocacy as the main form of action?",
+      "options": [
+        "Speaking at a town meeting about bike lanes",
+        "Starting a fair-trade snack stand to fund a library abroad",
+        "Collecting signatures for a safer playground"
+      ],
+      "answer": "Starting a fair-trade snack stand to fund a library abroad",
+      "explanation": "That project is more like social entrepreneurship; the others aim to influence decisions."
+    },
+    {
+      "id": "c8",
+      "type": "best_fit",
+      "prompt": "Your class wants cleaner air near the school. What is the strongest fit for giving a speech to the school board?",
+      "options": [
+        "Advocacy",
+        "Lifestyle choices",
+        "Social entrepreneurship"
+      ],
+      "answer": "Advocacy",
+      "explanation": "Presenting to decision-makers to change policy is advocacy."
+    },
+    {
+      "id": "c9",
+      "type": "best_fit",
+      "prompt": "You decide to walk or bike instead of always asking for a ride, to lower pollution.",
+      "options": [
+        "Lifestyle choices",
+        "Social justice",
+        "Participation"
+      ],
+      "answer": "Lifestyle choices",
+      "explanation": "A personal habit change is a lifestyle choice."
+    },
+    {
+      "id": "c10",
+      "type": "best_fit",
+      "prompt": "Students plan a fair where groups share cultures and raise money for a local shelter.",
+      "options": [
+        "Participation",
+        "Advocacy",
+        "Social justice"
+      ],
+      "answer": "Participation",
+      "explanation": "Joining in a community event is participation (even if it also supports a cause)."
+    },
+    {
+      "id": "c11",
+      "type": "same_issue",
+      "namedAction": "Social entrepreneurship",
+      "prompt": "Issue: plastic waste on the beach. Which response best matches Social entrepreneurship?",
+      "options": [
+        "Sell reusable bags designed by students and use profits for beach clean-up supplies",
+        "Sign a petition to ban single-use plastics in the town",
+        "Pick up litter once a month with friends"
+      ],
+      "answer": "Sell reusable bags designed by students and use profits for beach clean-up supplies",
+      "explanation": "A small venture linked to solving the problem matches social entrepreneurship."
+    },
+    {
+      "id": "c12",
+      "type": "same_issue",
+      "namedAction": "Social justice",
+      "prompt": "Issue: some students do not have warm coats in winter. Which response best matches Social justice?",
+      "options": [
+        "Run a drive so every student can get a coat, and talk about why access should be fair",
+        "Sell hot chocolate to buy one coat",
+        "Turn down the heat at home to save energy"
+      ],
+      "answer": "Run a drive so every student can get a coat, and talk about why access should be fair",
+      "explanation": "Addressing unfairness and dignity for everyone fits social justice."
+    },
+    {
+      "id": "c13",
+      "type": "classify",
+      "prompt": "Vote in a student election (if your school has one) or help classmates register for a youth forum.",
+      "options": [
+        "Participation",
+        "Lifestyle choices",
+        "Advocacy"
+      ],
+      "answer": "Participation",
+      "explanation": "Taking part in group decision-making and civic activities is participation."
+    },
+    {
+      "id": "c14",
+      "type": "best_fit",
+      "prompt": "A rule treats one group of students differently in a way that feels unfair. What is the best fit for organizing a peaceful awareness day?",
+      "options": [
+        "Social justice",
+        "Social entrepreneurship",
+        "Lifestyle choices"
+      ],
+      "answer": "Social justice",
+      "explanation": "Organizing around fairness and rights is social justice."
+    },
+    {
+      "id": "c15",
+      "type": "odd_one_out",
+      "target": "Lifestyle choices",
+      "prompt": "Which action is the odd one out (not mainly Lifestyle choices)?",
+      "options": [
+        "Choosing to pack a waste-free lunch",
+        "Carpooling to reduce emissions",
+        "Launching a student company that plants trees for every sale"
+      ],
+      "answer": "Launching a student company that plants trees for every sale",
+      "explanation": "The first two are personal habits; starting a venture is social entrepreneurship."
+    },
+    {
+      "id": "c16",
+      "type": "same_issue",
+      "namedAction": "Advocacy",
+      "prompt": "Issue: the library might close. Same issue, different actions. Which best matches Advocacy?",
+      "options": [
+        "Present facts to the city council and ask them to keep it open",
+        "Volunteer to shelve books on Saturdays",
+        "Read an extra book each week yourself"
+      ],
+      "answer": "Present facts to the city council and ask them to keep it open",
+      "explanation": "Speaking to people in power to change a decision is advocacy."
+    }
+  ]
+}
