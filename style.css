@@ -181,15 +181,69 @@ body {
   color: var(--accent-dark);
 }
 
+/* Current player + primary actions (Roll largest) */
+.turn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.85rem 1.25rem;
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
 /* Whose turn — large, token-colored name + strip background */
 .turn-strip {
-  margin: 0 auto;
-  max-width: 36rem;
+  flex: 1 1 220px;
+  margin: 0;
+  max-width: 100%;
   padding: 0.85rem 1.25rem;
   border-radius: var(--radius);
   border: 2px solid var(--border);
   box-shadow: var(--shadow);
   transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.turn-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  min-width: 140px;
+}
+
+.btn-roll {
+  font-size: 1.4rem;
+  padding: 1rem 1.75rem;
+  min-height: 64px;
+  min-width: 150px;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+}
+
+.btn-next {
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  min-height: 44px;
+  min-width: 120px;
+}
+
+/* Small restart — bottom right of game screen */
+.game-bottom-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+  padding: 0.25rem 0 0;
+}
+
+.btn-restart {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  min-height: 34px;
+  min-width: auto;
 }
 
 .turn-banner {
@@ -569,14 +623,6 @@ body {
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--accent-dark);
-}
-
-/* — Controls — */
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
 }
 
 /* — Modal — */

@@ -29,11 +29,17 @@
     <section id="screen-game" class="screen is-hidden" aria-live="polite">
       <header class="game-header">
         <h1 class="game-title">Forms of Action</h1>
-        <div id="turn-strip" class="turn-strip" aria-live="polite">
-          <p class="turn-banner">
-            <span class="turn-prefix">Current turn</span>
-            <span id="turn-name" class="turn-name"></span>
-          </p>
+        <div class="turn-row">
+          <div id="turn-strip" class="turn-strip" aria-live="polite">
+            <p class="turn-banner">
+              <span class="turn-prefix">Current turn</span>
+              <span id="turn-name" class="turn-name"></span>
+            </p>
+          </div>
+          <div class="turn-actions">
+            <button type="button" id="btn-roll" class="btn btn-primary btn-roll">Roll</button>
+            <button type="button" id="btn-next" class="btn btn-secondary btn-next" disabled>Next turn</button>
+          </div>
         </div>
       </header>
 
@@ -58,13 +64,11 @@
           </div>
 
           <div id="feedback" class="feedback is-hidden" role="status" aria-live="assertive"></div>
-
-          <div class="controls">
-            <button type="button" id="btn-roll" class="btn btn-primary">Roll</button>
-            <button type="button" id="btn-next" class="btn btn-secondary" disabled>Next turn</button>
-            <button type="button" id="btn-restart" class="btn btn-outline">Restart game</button>
-          </div>
         </div>
+      </div>
+
+      <div class="game-bottom-bar">
+        <button type="button" id="btn-restart" class="btn btn-outline btn-restart">Restart game</button>
       </div>
     </section>
 
