@@ -115,6 +115,13 @@ body {
   padding-top: 1rem;
 }
 
+.setup-banner {
+  display: block;
+  width: min(100%, 760px);
+  height: auto;
+  margin: 1rem auto 0;
+}
+
 /* — Buttons — */
 .btn {
   font: inherit;
