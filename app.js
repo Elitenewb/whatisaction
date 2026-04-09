@@ -376,7 +376,8 @@ function renderCard() {
   }
   el.cardPrompt.textContent = c.prompt;
   el.cardOptions.innerHTML = '';
-  c.options.forEach((opt) => {
+  const shuffledOptions = shuffle(c.options);
+  shuffledOptions.forEach((opt) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'opt-btn';
