@@ -1,213 +1,556 @@
 {
-  "meta": {
-    "title": "Forms of Action Game",
-    "version": 1
-  },
-  "labels": {
-    "Lifestyle choices": "Personal daily habits and choices that reflect values (reduce, reuse, everyday decisions).",
-    "Participation": "Joining in community efforts: volunteering, helping run events, contributing time in groups.",
-    "Advocacy": "Speaking up to influence decisions: petitions, letters, presentations to people in power.",
-    "Social entrepreneurship": "Starting or running a project or business that aims to solve a social or environmental problem.",
-    "Social justice": "Working for fairness and rights so all people are treated with dignity and equity."
-  },
   "cards": [
     {
       "id": "c1",
       "type": "classify",
-      "prompt": "Bring a reusable water bottle to school every day.",
-      "options": [
-        "Lifestyle choices",
-        "Participation",
-        "Advocacy"
-      ],
+      "prompt": "Choose to bring a reusable container for lunch every day.",
+      "options": ["Lifestyle choices", "Participation", "Advocacy"],
       "answer": "Lifestyle choices",
-      "explanation": "This is a personal daily habit change."
+      "explanation": "This is a personal daily habit."
     },
     {
       "id": "c2",
       "type": "classify",
-      "prompt": "Help set up chairs before a school fundraiser.",
-      "options": [
-        "Participation",
-        "Social entrepreneurship",
-        "Social justice"
-      ],
+      "prompt": "Join a group that cleans the schoolyard once a week.",
+      "options": ["Participation", "Advocacy", "Social justice"],
       "answer": "Participation",
-      "explanation": "Volunteering time for a community event is participation."
+      "explanation": "You are joining a group effort."
     },
     {
       "id": "c3",
       "type": "classify",
-      "prompt": "Write a letter to the mayor asking for safer crosswalks near your school.",
-      "options": [
-        "Advocacy",
-        "Lifestyle choices",
-        "Participation"
-      ],
+      "prompt": "Make a presentation asking students to reduce food waste.",
+      "options": ["Advocacy", "Participation", "Lifestyle choices"],
       "answer": "Advocacy",
-      "explanation": "Trying to influence leaders’ decisions is advocacy."
+      "explanation": "You are trying to influence others."
     },
     {
       "id": "c4",
       "type": "classify",
-      "prompt": "Start a small business selling handmade items and donate part of the money to a food bank.",
-      "options": [
-        "Social entrepreneurship",
-        "Advocacy",
-        "Lifestyle choices"
-      ],
+      "prompt": "Create a system where students can share unused school supplies.",
+      "options": ["Social entrepreneurship", "Participation", "Advocacy"],
       "answer": "Social entrepreneurship",
-      "explanation": "Using an enterprise to address a social need fits social entrepreneurship."
+      "explanation": "You are creating a solution to a problem."
     },
     {
       "id": "c5",
       "type": "classify",
-      "prompt": "Organize a student group to speak up when classmates are treated unfairly because of their background.",
-      "options": [
-        "Social justice",
-        "Participation",
-        "Social entrepreneurship"
-      ],
+      "prompt": "Stand up for a student who is being treated unfairly.",
+      "options": ["Social justice", "Participation", "Lifestyle choices"],
       "answer": "Social justice",
-      "explanation": "Standing up for fairness and equal treatment is social justice work."
+      "explanation": "This focuses on fairness and rights."
     },
+
     {
       "id": "c6",
       "type": "odd_one_out",
-      "target": "Participation",
-      "prompt": "Which one is NOT mainly an example of Participation?",
+      "target": "Lifestyle choices",
+      "prompt": "Which one is NOT mainly a Lifestyle choice?",
       "options": [
-        "Helping at a community clean-up day",
-        "Joining the student council to plan events",
-        "Writing to a company CEO to change a policy"
+        "Using less plastic at lunch",
+        "Turning off lights at home",
+        "Starting a recycling club at school"
       ],
-      "answer": "Writing to a company CEO to change a policy",
-      "explanation": "The first two are joining in; writing to influence a leader is closer to advocacy."
+      "answer": "Starting a recycling club at school",
+      "explanation": "That involves organizing others, not just personal habits."
     },
     {
       "id": "c7",
       "type": "odd_one_out",
-      "target": "Advocacy",
-      "prompt": "Which one does NOT fit Advocacy as the main form of action?",
+      "target": "Participation",
+      "prompt": "Which one is NOT mainly Participation?",
       "options": [
-        "Speaking at a town meeting about bike lanes",
-        "Starting a fair-trade snack stand to fund a library abroad",
-        "Collecting signatures for a safer playground"
+        "Joining a cleanup day",
+        "Helping at a school event",
+        "Making a video to teach others"
       ],
-      "answer": "Starting a fair-trade snack stand to fund a library abroad",
-      "explanation": "That project is more like social entrepreneurship; the others aim to influence decisions."
+      "answer": "Making a video to teach others",
+      "explanation": "That is advocacy because it spreads a message."
     },
     {
       "id": "c8",
-      "type": "best_fit",
-      "prompt": "Your class wants cleaner air near the school. What is the strongest fit for giving a speech to the school board?",
+      "type": "odd_one_out",
+      "target": "Advocacy",
+      "prompt": "Which one is NOT mainly Advocacy?",
       "options": [
-        "Advocacy",
-        "Lifestyle choices",
-        "Social entrepreneurship"
+        "Writing a letter to the principal",
+        "Making posters about recycling",
+        "Changing your own habits at home"
       ],
-      "answer": "Advocacy",
-      "explanation": "Presenting to decision-makers to change policy is advocacy."
+      "answer": "Changing your own habits at home",
+      "explanation": "That is a lifestyle choice."
     },
+
     {
       "id": "c9",
       "type": "best_fit",
-      "prompt": "You decide to walk or bike instead of always asking for a ride, to lower pollution.",
-      "options": [
-        "Lifestyle choices",
-        "Social justice",
-        "Participation"
-      ],
-      "answer": "Lifestyle choices",
-      "explanation": "A personal habit change is a lifestyle choice."
+      "prompt": "You create posters to teach others about saving water.",
+      "options": ["Advocacy", "Lifestyle choices", "Participation"],
+      "answer": "Advocacy",
+      "explanation": "You are spreading a message."
     },
     {
       "id": "c10",
       "type": "best_fit",
-      "prompt": "Students plan a fair where groups share cultures and raise money for a local shelter.",
-      "options": [
-        "Participation",
-        "Advocacy",
-        "Social justice"
-      ],
-      "answer": "Participation",
-      "explanation": "Joining in a community event is participation (even if it also supports a cause)."
+      "prompt": "You decide to stop wasting food at lunch.",
+      "options": ["Lifestyle choices", "Advocacy", "Social justice"],
+      "answer": "Lifestyle choices",
+      "explanation": "This is your own habit."
     },
+
     {
       "id": "c11",
       "type": "same_issue",
-      "namedAction": "Social entrepreneurship",
-      "prompt": "Issue: plastic waste on the beach. Which response best matches Social entrepreneurship?",
+      "namedAction": "Participation",
+      "prompt": "Issue: litter at school. Which response is Participation?",
       "options": [
-        "Sell reusable bags designed by students and use profits for beach clean-up supplies",
-        "Sign a petition to ban single-use plastics in the town",
-        "Pick up litter once a month with friends"
+        "Join a weekly cleanup group",
+        "Tell others to stop littering",
+        "Use less plastic yourself"
       ],
-      "answer": "Sell reusable bags designed by students and use profits for beach clean-up supplies",
-      "explanation": "A small venture linked to solving the problem matches social entrepreneurship."
+      "answer": "Join a weekly cleanup group",
+      "explanation": "You are working with others."
     },
     {
       "id": "c12",
       "type": "same_issue",
-      "namedAction": "Social justice",
-      "prompt": "Issue: some students do not have warm coats in winter. Which response best matches Social justice?",
+      "namedAction": "Advocacy",
+      "prompt": "Issue: unhealthy snacks. Which is Advocacy?",
       "options": [
-        "Run a drive so every student can get a coat, and talk about why access should be fair",
-        "Sell hot chocolate to buy one coat",
-        "Turn down the heat at home to save energy"
+        "Make a video about healthy food",
+        "Eat healthier snacks yourself",
+        "Start a school garden system"
       ],
-      "answer": "Run a drive so every student can get a coat, and talk about why access should be fair",
-      "explanation": "Addressing unfairness and dignity for everyone fits social justice."
+      "answer": "Make a video about healthy food",
+      "explanation": "You are influencing others."
     },
+
     {
       "id": "c13",
-      "type": "classify",
-      "prompt": "Vote in a student election (if your school has one) or help classmates register for a youth forum.",
+      "type": "odd_one_out",
+      "target": "Social entrepreneurship",
+      "prompt": "Which one does NOT fit Social entrepreneurship?",
       "options": [
-        "Participation",
-        "Lifestyle choices",
-        "Advocacy"
+        "Create a book-sharing system",
+        "Design a reuse station",
+        "Join a cleanup group"
       ],
-      "answer": "Participation",
-      "explanation": "Taking part in group decision-making and civic activities is participation."
+      "answer": "Join a cleanup group",
+      "explanation": "That is participation, not creating a system."
     },
     {
       "id": "c14",
-      "type": "best_fit",
-      "prompt": "A rule treats one group of students differently in a way that feels unfair. What is the best fit for organizing a peaceful awareness day?",
+      "type": "odd_one_out",
+      "target": "Social justice",
+      "prompt": "Which one does NOT fit Social justice?",
       "options": [
-        "Social justice",
-        "Social entrepreneurship",
-        "Lifestyle choices"
+        "Standing up for fairness",
+        "Speaking about equal rights",
+        "Recycling paper at home"
       ],
-      "answer": "Social justice",
-      "explanation": "Organizing around fairness and rights is social justice."
+      "answer": "Recycling paper at home",
+      "explanation": "That is a lifestyle choice."
     },
+
     {
       "id": "c15",
-      "type": "odd_one_out",
-      "target": "Lifestyle choices",
-      "prompt": "Which action is the odd one out (not mainly Lifestyle choices)?",
-      "options": [
-        "Choosing to pack a waste-free lunch",
-        "Carpooling to reduce emissions",
-        "Launching a student company that plants trees for every sale"
-      ],
-      "answer": "Launching a student company that plants trees for every sale",
-      "explanation": "The first two are personal habits; starting a venture is social entrepreneurship."
+      "type": "classify",
+      "prompt": "Ask your family to reduce electricity use.",
+      "options": ["Advocacy", "Participation", "Lifestyle choices"],
+      "answer": "Advocacy",
+      "explanation": "You are trying to influence others."
     },
     {
       "id": "c16",
+      "type": "classify",
+      "prompt": "Help run a fundraiser event.",
+      "options": ["Participation", "Social entrepreneurship", "Advocacy"],
+      "answer": "Participation",
+      "explanation": "You are joining a group effort."
+    },
+
+    {
+      "id": "c17",
+      "type": "best_fit",
+      "prompt": "You design a system where extra food can be shared.",
+      "options": ["Social entrepreneurship", "Participation", "Lifestyle choices"],
+      "answer": "Social entrepreneurship",
+      "explanation": "You created a solution."
+    },
+    {
+      "id": "c18",
+      "type": "best_fit",
+      "prompt": "You speak up when rules are unfair.",
+      "options": ["Social justice", "Advocacy", "Participation"],
+      "answer": "Social justice",
+      "explanation": "This focuses on fairness."
+    },
+
+    {
+      "id": "c19",
+      "type": "same_issue",
+      "namedAction": "Lifestyle choices",
+      "prompt": "Issue: climate change. Which is Lifestyle?",
+      "options": [
+        "Use less energy at home",
+        "Join a protest",
+        "Write to a leader"
+      ],
+      "answer": "Use less energy at home",
+      "explanation": "This is a personal habit."
+    },
+    {
+      "id": "c20",
+      "type": "same_issue",
+      "namedAction": "Social justice",
+      "prompt": "Issue: bullying. Which is Social justice?",
+      "options": [
+        "Stand up for someone being bullied",
+        "Join a group discussion",
+        "Make posters about kindness"
+      ],
+      "answer": "Stand up for someone being bullied",
+      "explanation": "This focuses on fairness and rights."
+    },
+
+    {
+      "id": "c21",
+      "type": "odd_one_out",
+      "target": "Participation",
+      "prompt": "Which one does NOT belong?",
+      "options": [
+        "Helping at a school event",
+        "Joining a club",
+        "Changing your daily habits"
+      ],
+      "answer": "Changing your daily habits",
+      "explanation": "That is a lifestyle choice."
+    },
+
+    {
+      "id": "c22",
+      "type": "classify",
+      "prompt": "Create a campaign to remind students to recycle.",
+      "options": ["Advocacy", "Participation", "Lifestyle choices"],
+      "answer": "Advocacy",
+      "explanation": "You are spreading a message."
+    },
+
+    {
+      "id": "c23",
+      "type": "classify",
+      "prompt": "Work with others to organize a school event.",
+      "options": ["Participation", "Advocacy", "Social justice"],
+      "answer": "Participation",
+      "explanation": "You are part of a group effort."
+    },
+
+    {
+      "id": "c24",
+      "type": "best_fit",
+      "prompt": "You build a tool that helps students reuse materials.",
+      "options": ["Social entrepreneurship", "Participation", "Lifestyle choices"],
+      "answer": "Social entrepreneurship",
+      "explanation": "You created a solution."
+    },
+
+    {
+      "id": "c25",
+      "type": "best_fit",
+      "prompt": "You decide to bring less packaged food.",
+      "options": ["Lifestyle choices", "Participation", "Advocacy"],
+      "answer": "Lifestyle choices",
+      "explanation": "This is a personal choice."
+    },
+
+    {
+      "id": "c26",
+      "type": "odd_one_out",
+      "target": "Advocacy",
+      "prompt": "Which one does NOT fit Advocacy?",
+      "options": [
+        "Making a speech",
+        "Writing a letter",
+        "Joining a cleanup"
+      ],
+      "answer": "Joining a cleanup",
+      "explanation": "That is participation."
+    },
+
+    {
+      "id": "c27",
+      "type": "same_issue",
+      "namedAction": "Participation",
+      "prompt": "Issue: food waste. Which is Participation?",
+      "options": [
+        "Join a waste tracking team",
+        "Make posters",
+        "Eat less waste yourself"
+      ],
+      "answer": "Join a waste tracking team",
+      "explanation": "You are working with others."
+    },
+
+    {
+      "id": "c28",
       "type": "same_issue",
       "namedAction": "Advocacy",
-      "prompt": "Issue: the library might close. Same issue, different actions. Which best matches Advocacy?",
+      "prompt": "Issue: energy waste. Which is Advocacy?",
       "options": [
-        "Present facts to the city council and ask them to keep it open",
-        "Volunteer to shelve books on Saturdays",
-        "Read an extra book each week yourself"
+        "Make a school campaign",
+        "Turn off lights yourself",
+        "Join a cleanup group"
       ],
-      "answer": "Present facts to the city council and ask them to keep it open",
-      "explanation": "Speaking to people in power to change a decision is advocacy."
+      "answer": "Make a school campaign",
+      "explanation": "You are influencing others."
+    },
+
+    {
+      "id": "c29",
+      "type": "classify",
+      "prompt": "Join a club that helps the environment.",
+      "options": ["Participation", "Advocacy", "Lifestyle choices"],
+      "answer": "Participation",
+      "explanation": "You are joining a group."
+    },
+
+    {
+      "id": "c30",
+      "type": "classify",
+      "prompt": "Speak at assembly about fairness.",
+      "options": ["Advocacy", "Social justice", "Participation"],
+      "answer": "Advocacy",
+      "explanation": "You are influencing others."
+    },
+
+    {
+      "id": "c31",
+      "type": "best_fit",
+      "prompt": "You create a system to collect unused supplies.",
+      "options": ["Social entrepreneurship", "Participation", "Advocacy"],
+      "answer": "Social entrepreneurship",
+      "explanation": "You created a solution."
+    },
+
+    {
+      "id": "c32",
+      "type": "best_fit",
+      "prompt": "You always include others in games.",
+      "options": ["Lifestyle choices", "Social justice", "Participation"],
+      "answer": "Lifestyle choices",
+      "explanation": "This is your daily behavior."
+    },
+
+    {
+      "id": "c33",
+      "type": "odd_one_out",
+      "target": "Social justice",
+      "prompt": "Which one does NOT fit Social justice?",
+      "options": [
+        "Standing up for fairness",
+        "Speaking about equal rights",
+        "Starting a reuse system"
+      ],
+      "answer": "Starting a reuse system",
+      "explanation": "That is social entrepreneurship."
+    },
+
+    {
+      "id": "c34",
+      "type": "odd_one_out",
+      "target": "Social entrepreneurship",
+      "prompt": "Which one does NOT fit?",
+      "options": [
+        "Creating a new system",
+        "Building a project",
+        "Joining a group effort"
+      ],
+      "answer": "Joining a group effort",
+      "explanation": "That is participation."
+    },
+
+    {
+      "id": "c35",
+      "type": "same_issue",
+      "namedAction": "Social entrepreneurship",
+      "prompt": "Issue: paper waste. Which is Social entrepreneurship?",
+      "options": [
+        "Create a reuse system",
+        "Join a cleanup",
+        "Tell others to recycle"
+      ],
+      "answer": "Create a reuse system",
+      "explanation": "You created a solution."
+    },
+
+    {
+      "id": "c36",
+      "type": "same_issue",
+      "namedAction": "Lifestyle choices",
+      "prompt": "Issue: pollution. Which is Lifestyle?",
+      "options": [
+        "Walk instead of drive",
+        "Write a letter",
+        "Join a protest"
+      ],
+      "answer": "Walk instead of drive",
+      "explanation": "This is a personal habit."
+    },
+
+    {
+      "id": "c37",
+      "type": "classify",
+      "prompt": "Ask classmates to change their habits.",
+      "options": ["Advocacy", "Participation", "Lifestyle choices"],
+      "answer": "Advocacy",
+      "explanation": "You are influencing others."
+    },
+
+    {
+      "id": "c38",
+      "type": "classify",
+      "prompt": "Help run a school club.",
+      "options": ["Participation", "Social entrepreneurship", "Advocacy"],
+      "answer": "Participation",
+      "explanation": "You are part of a group."
+    },
+
+    {
+      "id": "c39",
+      "type": "best_fit",
+      "prompt": "You invent a system to reduce waste.",
+      "options": ["Social entrepreneurship", "Participation", "Lifestyle choices"],
+      "answer": "Social entrepreneurship",
+      "explanation": "You created a solution."
+    },
+
+    {
+      "id": "c40",
+      "type": "best_fit",
+      "prompt": "You always recycle your own materials.",
+      "options": ["Lifestyle choices", "Participation", "Advocacy"],
+      "answer": "Lifestyle choices",
+      "explanation": "This is a personal habit."
+    },
+
+    {
+      "id": "c41",
+      "type": "odd_one_out",
+      "target": "Lifestyle choices",
+      "prompt": "Which one does NOT fit?",
+      "options": [
+        "Using less plastic",
+        "Turning off lights",
+        "Writing a speech"
+      ],
+      "answer": "Writing a speech",
+      "explanation": "That is advocacy."
+    },
+
+    {
+      "id": "c42",
+      "type": "same_issue",
+      "namedAction": "Advocacy",
+      "prompt": "Issue: bullying. Which is Advocacy?",
+      "options": [
+        "Make a presentation",
+        "Change your behavior",
+        "Join a group"
+      ],
+      "answer": "Make a presentation",
+      "explanation": "You are influencing others."
+    },
+
+    {
+      "id": "c43",
+      "type": "same_issue",
+      "namedAction": "Participation",
+      "prompt": "Issue: recycling. Which is Participation?",
+      "options": [
+        "Join a recycling team",
+        "Make a poster",
+        "Recycle at home"
+      ],
+      "answer": "Join a recycling team",
+      "explanation": "You are working with others."
+    },
+
+    {
+      "id": "c44",
+      "type": "classify",
+      "prompt": "Start a project that helps share food.",
+      "options": ["Social entrepreneurship", "Participation", "Advocacy"],
+      "answer": "Social entrepreneurship",
+      "explanation": "You created a system."
+    },
+
+    {
+      "id": "c45",
+      "type": "classify",
+      "prompt": "Speak up about fairness.",
+      "options": ["Social justice", "Advocacy", "Participation"],
+      "answer": "Social justice",
+      "explanation": "The focus is fairness."
+    },
+
+    {
+      "id": "c46",
+      "type": "best_fit",
+      "prompt": "You organize a team to help others.",
+      "options": ["Participation", "Social entrepreneurship", "Lifestyle choices"],
+      "answer": "Participation",
+      "explanation": "You are working with others."
+    },
+
+    {
+      "id": "c47",
+      "type": "best_fit",
+      "prompt": "You teach others to change habits.",
+      "options": ["Advocacy", "Participation", "Lifestyle choices"],
+      "answer": "Advocacy",
+      "explanation": "You are influencing others."
+    },
+
+    {
+      "id": "c48",
+      "type": "odd_one_out",
+      "target": "Advocacy",
+      "prompt": "Which one does NOT belong?",
+      "options": [
+        "Making a video",
+        "Writing a letter",
+        "Building a system"
+      ],
+      "answer": "Building a system",
+      "explanation": "That is social entrepreneurship."
+    },
+
+    {
+      "id": "c49",
+      "type": "odd_one_out",
+      "target": "Participation",
+      "prompt": "Which one does NOT belong?",
+      "options": [
+        "Joining a group",
+        "Helping at events",
+        "Changing your own habits"
+      ],
+      "answer": "Changing your own habits",
+      "explanation": "That is lifestyle."
+    },
+
+    {
+      "id": "c50",
+      "type": "same_issue",
+      "namedAction": "Social justice",
+      "prompt": "Issue: unfair treatment. Which is Social justice?",
+      "options": [
+        "Stand up for fairness",
+        "Join a group",
+        "Make a system"
+      ],
+      "answer": "Stand up for fairness",
+      "explanation": "This focuses on fairness and rights."
     }
   ]
 }
