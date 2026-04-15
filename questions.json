@@ -318,7 +318,7 @@
       "id": "c30",
       "type": "classify",
       "prompt": "Speak at assembly about fairness.",
-      "options": ["Advocacy", "Social justice", "Participation"],
+      "options": ["Advocacy", "Lifestyle choices", "Participation"],
       "answer": "Advocacy",
       "explanation": "You are influencing others."
     },
