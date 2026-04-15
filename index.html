@@ -47,7 +47,6 @@
 
       <div class="game-layout">
         <div class="column board-column">
-          <div class="status-bar" id="status-bar"></div>
           <div class="board-wrap" role="region" aria-label="Game board">
             <div id="board-path" class="board-path"></div>
           </div>
@@ -78,6 +77,16 @@
       <div class="modal-box">
         <p id="winner-text" class="winner-text"></p>
         <button type="button" id="btn-play-again" class="btn btn-primary">Play again</button>
+      </div>
+    </div>
+
+    <div id="restart-confirm" class="modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="restart-confirm-title">
+      <div class="modal-box">
+        <p id="restart-confirm-title" class="winner-text">Are you sure?</p>
+        <div class="modal-btn-row">
+          <button type="button" id="btn-restart-no" class="btn btn-secondary">No</button>
+          <button type="button" id="btn-restart-yes" class="btn btn-primary">Yes</button>
+        </div>
       </div>
     </div>
   </div>

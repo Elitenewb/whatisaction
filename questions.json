@@ -498,8 +498,8 @@
       "type": "best_fit",
       "prompt": "You organize a team to help others.",
       "options": ["Participation", "Social entrepreneurship", "Lifestyle choices"],
-      "answer": "Participation",
-      "explanation": "You are working with others."
+      "answer": "Social entrepreneurship",
+      "explanation": "You create a system for others to help."
     },
 
     {

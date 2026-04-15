@@ -11,7 +11,7 @@ const SOUND_URLS = {
   victory: 'assets/sounds/victory.mp3',
 };
 
-const FINISH_INDEX = 27;
+const FINISH_INDEX = 29;
 
 let diceRollTimerId = null;
 
@@ -44,6 +44,8 @@ const BOARD_SPACES = [
   { label: '24', special: null },
   { label: '25', special: null },
   { label: '26', special: null },
+  { label: '27', special: null },
+  { label: '28', special: null },
   { label: 'Finish', special: null },
 ];
 
@@ -245,7 +247,6 @@ const el = {
   btnStart: document.getElementById('btn-start'),
   turnStrip: document.getElementById('turn-strip'),
   turnName: document.getElementById('turn-name'),
-  statusBar: document.getElementById('status-bar'),
   boardPath: document.getElementById('board-path'),
   dicePanel: document.getElementById('dice-panel'),
   diceValue: document.getElementById('dice-value'),
@@ -258,6 +259,9 @@ const el = {
   gameOver: document.getElementById('game-over'),
   winnerText: document.getElementById('winner-text'),
   btnPlayAgain: document.getElementById('btn-play-again'),
+  restartConfirm: document.getElementById('restart-confirm'),
+  btnRestartNo: document.getElementById('btn-restart-no'),
+  btnRestartYes: document.getElementById('btn-restart-yes'),
 };
 
 function buildBoardDom() {
@@ -317,16 +321,6 @@ function renderTokens() {
     tok.title = pl.name;
     holder.appendChild(tok);
   });
-}
-
-function renderStatus() {
-  const lines = state.players.map((p, i) => {
-    const here = p.position;
-    const label =
-      here === 0 ? 'Start' : here >= FINISH_INDEX ? 'Finish' : `Space ${here} of ${FINISH_INDEX - 1}`;
-    return `<span class="status-line p${i}"><strong>${escapeHtml(p.name)}</strong>: ${escapeHtml(label)}</span>`;
-  });
-  el.statusBar.innerHTML = lines.join('');
 }
 
 function escapeHtml(s) {
@@ -427,7 +421,6 @@ function updateControls() {
 
 function syncUi() {
   renderTurnBanner();
-  renderStatus();
   renderDice();
   renderCard();
   renderFeedback();
@@ -562,13 +555,35 @@ function onNextTurn() {
   syncUi();
 }
 
-function onRestart() {
+function openRestartConfirm() {
+  el.restartConfirm.classList.remove('is-hidden');
+  el.btnRestartYes.focus();
+}
+
+function hideRestartConfirm() {
+  el.restartConfirm.classList.add('is-hidden');
+}
+
+function performRestart() {
   clearDiceRollAnimation();
+  hideRestartConfirm();
   state = createInitialState();
   state.phase = 'setup';
   el.gameOver.classList.add('is-hidden');
   showSetupScreen();
   syncUi();
+}
+
+function onRestartClick() {
+  openRestartConfirm();
+}
+
+function onRestartConfirmYes() {
+  performRestart();
+}
+
+function onRestartConfirmNo() {
+  hideRestartConfirm();
 }
 
 function onPlayAgain() {
@@ -590,7 +605,9 @@ function wireEvents() {
   el.btnStart.addEventListener('click', startGame);
   el.btnRoll.addEventListener('click', onRoll);
   el.btnNext.addEventListener('click', onNextTurn);
-  el.btnRestart.addEventListener('click', onRestart);
+  el.btnRestart.addEventListener('click', onRestartClick);
+  el.btnRestartNo.addEventListener('click', onRestartConfirmNo);
+  el.btnRestartYes.addEventListener('click', onRestartConfirmYes);
   el.btnPlayAgain.addEventListener('click', onPlayAgain);
 }
 
